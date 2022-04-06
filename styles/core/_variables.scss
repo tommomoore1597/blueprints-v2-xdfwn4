@@ -1,0 +1,51 @@
+:root {
+  // Font
+  --f--font-family-primary: #{font-family(primary)};
+  --f--font-family-secondary: #{font-family(secondary)};
+  --f--font-size: #{$settings-font-base-size};
+  --f--line-height: 1.4;
+
+  // Color
+  --c--background-primary: #{color(white)};
+  --c--background-secondary: #{color(blue)};
+  
+  --c--highlight: #{color(yellow)};
+
+  --c--text-primary: #{font-color(primary)}; 
+  --c--text-secondary: #{font-color(secondary)};
+  --c--text-tertiary: #{font-color(tertiary)};
+  --c--text-highlight: #{font-color(highlight)};
+
+  --c--border-primary: #{grey(2)};
+
+  // Shadow
+  --shadow-level-0: #{0 0 0.5rem 0 fade-out(color(black), 0.7)};
+  --shadow-level-1: #{0 0 1rem 0 fade-out(color(black), 0.5)};
+  --shadow-level-2: #{0 0 3rem 0 fade-out(color(black), 0.7)};
+
+  // Layout
+  --layout-text-width: #{layout-width('text')};
+  --layout-content-width: #{layout-width('content')};
+  --layout-inner-width: #{layout-width('inner')};
+  --layout-outer-width: #{layout-width('outer')};
+
+  // Space
+  --space-small: #{gap(-1)};
+  --space: #{gap(-1)};
+  --space-large: #{gap(0)};
+  --space-xlarge: #{gap(1)};
+
+  @include screen(medium) {
+    --space: #{gap(0)};
+  }
+
+  @include screen(large) {
+    --space-large: #{gap(1)};
+    --space-xlarge: #{gap(2)};
+  }
+
+  @include screen(xlarge) {
+    --space-xlarge: #{gap(3)};
+  }
+}
+

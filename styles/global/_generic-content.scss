@@ -1,0 +1,171 @@
+.generic-content > {
+  h1 {
+    @extend %h1;
+  }
+  h2 {
+    @extend %h2;
+  }
+  h3 {
+    @extend %h3;
+  }
+  h4 {
+    @extend %h4;
+  }
+  h5 {
+    @extend %h5;
+  }
+  h6 {
+    @extend %h6;
+  }
+
+  p {
+    @extend %p;
+
+    a {
+      @extend %link;
+      @extend %link-inline;
+    }
+  }
+
+  blockquote {
+    p {
+      @extend %quote;
+    }
+
+    cite {
+      @extend %quote-cite;
+    }
+  }
+
+  ul {
+    @extend %ul;
+  }
+  ul li {
+    @extend %ul-li;
+  }
+
+  ol {
+    @extend %ol;
+  }
+  ol li {
+    @extend %ol-li;
+  }
+
+  img {
+    display: inline-block;
+
+    margin: 1em 0 3em;
+
+    width: 100%;
+  }
+}
+
+.generic-content-block {
+  @extend %layout-body;
+
+  justify-items: start;
+  align-items: start;
+
+  > *,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol,
+  blockquote,
+  img,
+  .para--two-col,
+  .widget {
+    @include layout-item();
+
+    margin: 1em 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  blockquote,
+  img,
+  .widget {
+    @include margin(0.5em, 1em 2em, medium large, top bottom);
+  }
+
+  blockquote p {
+    margin-bottom: 0;
+  }
+
+  blockquote cite {
+    display: inline-block;
+
+    @include margin(0.5em, 1em, medium, top);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol {
+    max-width: $mw-text;
+  }
+
+  blockquote,
+  blockquote p,
+  blockquote cite,
+  .para--two-col {
+    max-width: #{$mw-content};
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol,
+  blockquote,
+  .para--two-col,
+  .widget {
+    &:empty {
+      display: none;
+    }
+  }
+
+  // blockquote,
+  img {
+    @include layout-item('wide');
+  }
+
+  .para--two-col {
+    columns: 1;
+
+    p {
+      margin-top: 0;
+      margin-bottom: 0.5em;
+    }
+
+    @include screen(medium) {
+      columns: 2;
+
+      p {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        break-inside: avoid;
+      }
+    }
+  }
+}

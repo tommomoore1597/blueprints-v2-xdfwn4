@@ -1,0 +1,395 @@
+:root,
+.preview {
+  --preview--c--page-background: #{color(white)};
+  --preview--c--elements-background: #23252d;
+
+  --preview--c--label-background: #{grey(1)};
+  --preview--c--label-text: #{grey(3)};
+
+  --preview--c--border-primary: #{grey(1)};
+  --preview--c--border-secondary: #98a0c2;
+
+  --preview--c--text-primary: #{color(black)};
+  --preview--c--text-secondary: #313b61;
+  --preview--c--text-tertiary: #98a0c2;
+  --preview--c--highlight: #ebeb5e;
+}
+
+.preview {
+  background-color: var(--preview--c--page-background);
+
+  &__theme-toggle {
+    position: absolute;
+    top: gap(1);
+    right: 0;
+
+    @include padding(gap(-1));
+  }
+
+  &__hero {
+    @include layout-item();
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    position: relative;
+
+    margin: gap(0) 0;
+
+    width: 100%;
+
+    &-title {
+      display: block; 
+
+      position: relative;
+
+      width: auto;
+
+      font-size: 3rem;
+      font-weight: 600;
+      line-height: 1.25;
+      text-align: left;
+      color: var(--preview--c--text-secondary);
+    }
+
+    p {
+      margin-bottom: 2em;
+
+      max-width: $mw-text;
+
+      font-size: 0.85rem;
+      font-weight: 400;
+      line-height: 2;
+      text-align: left;
+      color: var(--preview--c--text-primary);
+    }
+  }
+
+  &__guides {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    pointer-events: none;
+
+    &-body,
+    &-item {
+      width: 100%;
+      height: 100%;
+    }
+
+    &-item {
+      grid-row: 1;
+      box-shadow: 0 0 0 1px var(--preview--c--border-primary);
+    }
+  }
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__body {
+    @include padding(gap(1), gap(2), medium, top bottom);
+
+    &.generic-content {
+      background: color($settings-base-background);
+      color: color($settings-font-base-color);
+    }
+
+    &-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      position: relative;
+      z-index: 1;
+
+      @include margin(gap(3), false, false, bottom);
+
+      h2 {
+        display: block;
+
+        padding: 1em;
+
+        width: auto;
+
+        background-color: var(--preview--c--page-background);
+
+        font-family: inherit;
+        font-size: 0.85rem;
+        font-weight: 400;
+        line-height: 1;
+        text-align: center;
+        text-transform: uppercase;
+        color: var(--preview--c--text-secondary);
+
+        &::before {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          z-index: -1;
+
+          transform: translate(-50%, -50%);
+
+          width: 100vw;
+          height: 1px;
+
+          background: var(--preview--c--text-secondary);
+
+          content: '';
+        }
+      }
+    }
+  }
+
+  // Colors
+  &__colors {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: center;
+
+    &-item {
+      display: none;
+      
+      position: relative;
+      
+      margin: gap(0);
+    
+      width: calc(20% - #{gap(0) * 2});
+      min-width: 8rem;
+      height: auto;
+
+      box-shadow: 0 0 0 1px var(--preview--c--label-background);
+      
+      &::before {
+        display: block;
+        padding-top: 100%;
+        content: '';
+      }
+      
+      &::after {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        
+        transform: translate(-50%, 50%);
+        
+        padding: .25rem .5rem;
+        
+        min-width: 80%;
+        max-width: calc(100% + gap(0));
+        
+        background: var(--preview--c--label-background);
+        
+        font-size: .75rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: center;
+        word-break: normal;
+        color: var(--preview--c--label-text);
+        
+        content: 'Label'
+      }
+
+      @each $name, $color in $settings-colors {
+        $i: index(($settings-colors), ($name $color)) + 1;
+        &:nth-child(#{$i}) {
+          display: block;
+          
+          background: $color; 
+    
+          &::after {
+            // content: "#{$name}: #{$color}";
+            content: '#{$color}';
+          }
+        }
+      }
+    }
+  }
+
+  // Grid element
+  &__grid {
+    &-item {
+      display: flex;
+      flex-flow: column nowrap;
+      align-items: center;
+      justify-content: center;
+
+      padding: 0.25rem;
+      @include margin(gap(0), gap(1), medium, bottom);
+
+      min-height: 8rem;
+
+      background: var(--preview--c--elements-background);
+      box-shadow: 0 0 0 1px var(--preview--c--elements-background);
+
+      font-size: rem(12);
+      font-weight: 600;
+      line-height: 1.5;
+      letter-spacing: 0.05em;
+      color: var(--preview--c--highlight);
+      text-align: center;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      span {
+        font-weight: 300;
+        text-transform: none;
+        color: var(--preview--c--text-tertiary);
+
+        &::before {
+          content: '// ';
+        }
+      }
+    }
+  }
+
+  // Listing
+  &__listing {
+    @include layout-item();
+
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  // Gap element
+  &__gap {
+    display: none;
+    position: relative;
+  
+    margin: 0 auto gap(2);
+    
+    width: 100%;
+    // min-height: 3rem;
+    
+    &::before {
+      position: absolute;
+      top: 0; 
+      left: 50%;
+      
+      transform: translate(-50%, 0);
+      
+      background: var(--preview--c--elements-background);
+      
+      content: '';
+    }
+  
+    &::after {
+      position: absolute;
+      left: 50%;
+      
+      transform: translate(-50%, 1rem);
+      
+      padding: .5rem 1rem;
+      
+      background: var(--preview--c--label-background);
+      
+      font-size: .75rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      color: var(--preview--c--label-text);
+    }
+    
+    @each $name, $size in $settings-gaps {
+      $i: index(($settings-gaps), ($name $size)) + 1;
+      &:nth-child(#{$i}) {
+        display: block;
+        
+        height: $size;
+  
+        &::before {
+          width: $size;
+          height: $size;
+        }
+  
+        &::after {
+          top: $size;
+          content: '#{$name}: #{$size}';
+        }
+      }
+    }
+  }
+
+  // Spacing element
+  &__spacing {
+    border: 1px dashed var(--preview--c--border-secondary);
+
+    &-margin {}
+
+    &-padding {
+      background-color: var(--preview--c--border-secondary);
+    }
+
+    &-inner {
+      width: 5rem;
+      height: 5rem;
+
+      background-color: var(--preview--c--elements-background);
+    }
+  }
+
+  &__spacing,
+  &__spacing-padding {
+    position: relative;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 50%;
+
+      transform: translate(-50%, -50%);
+
+      padding: 0.25rem 1rem;
+
+      background-color: var(--preview--c--label-background);
+
+      font-size: 0.85rem;
+      line-height: 1;
+      text-transform: uppercase;
+      color: var(--preview--c--label-text);
+    }
+  }
+
+  &__spacing::before {
+    content: 'Margin';
+  }
+  &__spacing-padding::before {
+    content: 'Padding';
+  }
+
+  &__spacing {
+    @include margin(gap(1), gap(2), large);
+
+    &-margin {
+      // @include margin();
+      margin: var(--space-large);
+
+      .spacing--variant-1 & {
+        @include margin(gap(2), gap(3), medium, bottom);
+        @include margin(gap(1), gap(2), large, top);
+      }
+    }
+
+    &-padding {
+      @include padding();
+
+      .spacing--variant-1 & {
+        @include padding(gap(-1), gap(0), medium, top bottom);
+        @include padding(gap(0), gap(2), large, left right);
+      }
+    }
+  }
+}

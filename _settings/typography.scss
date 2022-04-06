@@ -1,0 +1,293 @@
+// FONT SETUP
+
+// FONT-FAMILY
+// ---
+// Font-families used in project
+// You can add more fonts if needed, just follow naming convention.
+// example: tertiary: "'Times New Roman', serif";
+//
+$settings-font-family: (
+  primary: "'Recoleta Alt', Georgia, Times New Roman, Times, serif",
+  secondary: "'poppins', Arial, Helvetica, sans-serif",
+);
+
+// FONT BASE SIZE
+// ---
+// Font base is a core value for whole project,
+// apart from font size it's used as a base for other values
+// like layout grid or gaps
+//
+// Value:
+// Number[px]
+//
+$settings-font-base-size: 16px;
+
+// FONT BASE COLOR
+// ---
+// Font base color value for whole project.
+// It is used as a fallback value when text element
+// color is not defined.
+//
+// Value:
+// Valid color key from $settings-colors map
+//
+$settings-font-base-color: color(black);
+
+// FONT SETUP - 1st Step
+// ---
+// First step of the font setup uses modularscale-scss to set base font sizes
+//
+// Notes:
+// Font system scale generates:
+// Font sizes, line heights and margins
+// would be calculated based on $settings-font-scale using modularscale
+//
+// Modularscale:
+// Modularscale generated font sizes can be found here: https://www.modularscale.com/
+// To see ms(x) values on the list click 'Sass' tab from left panel.
+//
+$settings-font-scale: 1.125;
+
+$modularscale: (
+  base: $settings-font-base-size,
+  ratio: $settings-font-scale,
+);
+
+// FONT SETUP - 2nd Step
+// ---
+// Map of common typography values, used to generate typography styles,
+// it would overwrite values from previous step.
+//
+// Structure:
+// name: (
+//    font-family: Font-family key from $settings-font-family,
+//    > example: font-family: secondary,
+//
+//    font-size:* Function: ms(), Number[rem, px],
+//    > example: font-size: ms(1),
+//    > or font-size: (ms(2), 2.5rem) - to set mobile and desktop values,
+//
+//    line-height:* Number[em, rem, px],
+//    > example: line-height: 1.4,
+//    > or line-height: (1.5, 2rem) - to set mobile and desktop values,
+//
+//    font-weight: Number,
+//    > example: font-weight: 500,
+//
+//    text-transform: String,
+//    > example: text-transform: uppercase,
+//
+//    margin-bottom: Number[em, rem, px],
+//    > example: margin-bottom: 1em,
+//    > or margin-bottom: gap(0) - to use value from $settings-gaps map
+//
+//    color: Valid color key from $settings-colors map,
+//    > example: color: black, - uses color assigned to black key in
+//      $settings-colors map
+//
+//    max-width: Function layout-width(), Number[em, rem, px]
+//    > example: max-width: layout-width('text-max-width'),
+// ),
+//
+// Notes:
+// * omit or set to false if you don't want to
+//   overwrite modularscale values.
+// ** single or double values for mobile [x] & desktop [y] devices
+//
+$settings-typography: (
+  header1: (
+    font-family: primary,
+    font-size: (
+      ms(10),
+      ms(13),
+    ),
+    font-weight: 500,
+  ),
+  header2: (
+    font-family: primary,
+    font-size: (
+      ms(7),
+      ms(9),
+    ),
+    font-weight: 500,
+  ),
+  header3: (
+    font-family: primary,
+    font-size: (
+      ms(6),
+      ms(7),
+    ),
+    font-weight: 500,
+    line-height: 1.1em,
+  ),
+  header4: (
+    font-family: primary,
+    font-size: (
+      ms(5),
+      ms(5),
+    ),
+    font-weight: 500,
+  ),
+  header5: (
+    font-family: secondary,
+    font-size: (
+      ms(2),
+      ms(2),
+    ),
+    font-weight: 600,
+    line-height: 1.2em,
+  ),
+  header6: (
+    font-family: secondary,
+    font-size: (
+      15px,
+      ms(0),
+    ),
+    font-weight: 600,
+    text-transform: uppercase,
+  ),
+  intro: (
+    font-family: secondary,
+    font-size: (
+      17px,
+      ms(2),
+    ),
+    font-weight: 400,
+    line-height: 1.6em,
+  ),
+  paragraph: (
+    font-family: secondary,
+    font-size: (
+      15px,
+      17px,
+    ),
+    font-weight: 400,
+    line-height: 1.6em,
+  ),
+  paragraph-small: (
+    font-family: secondary,
+    font-size: (
+      15px,
+      15px,
+    ),
+    font-weight: 400,
+    line-height: 1.6em,
+  ),
+  link: (
+    font-style: italic,
+  ),
+  unordered-list: (),
+  ul-item: (
+    font-family: secondary,
+    font-size: (
+      15px,
+      17px,
+    ),
+    font-weight: 400,
+    line-height: 1.6em,
+  ),
+  ordered-list: (),
+  ol-item: (
+    font-family: secondary,
+    font-size: (
+      15px,
+      17px,
+    ),
+    font-weight: 400,
+  ),
+  quote: (
+    font-family: primary,
+    font-size: (
+      ms(3),
+      ms(5),
+    ),
+    font-weight: 400,
+    line-height: 1.5em,
+  ),
+  quote-cite: (
+    font-family: secondary,
+    font-size: (
+      15px,
+      17px,
+    ),
+    font-weight: 500,
+    line-height: 1.6em,
+  ),
+);
+
+// FONT SETUP - 3rd Step
+// ---
+// Additional font styling.
+// This section would NOT overwrite any values from $settings-typography map above
+//
+%settings-header1 {
+}
+%settings-header2 {
+}
+%settings-header3 {
+}
+%settings-header4 {
+}
+%settings-header5 {
+}
+%settings-header6 {
+}
+%settings-intro {
+}
+%settings-paragraph {
+}
+%settings-paragraph-small {
+}
+%settings-link {
+}
+%settings-list {
+}
+%settings-unordered-list {
+}
+%settings-ul-item {
+  display: inline-block;
+  position: relative;
+  padding-left: 1.2em;
+  width: 100%;
+  margin-bottom: 0.7em !important;
+
+  &::before {
+    position: absolute;
+    top: -0.25em;
+    left: 0;
+
+    width: 0.55em;
+    height: 0.55em;
+
+    content: url("data:image/svg+xml;charset=UTF-8, <svg xmlns='http://www.w3.org/2000/svg' width='8' height='3' viewBox='0 0 8 3'><rect width='8' height='3' fill='rgb(50,25,33)'/></svg>");
+  }
+}
+%settings-ordered-list {
+  counter-reset: ordered;
+}
+%settings-ol-item {
+  display: inline-block;
+  position: relative;
+  padding-left: 1.2em;
+  width: 100%;
+  margin-bottom: 0.9em !important;
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-style: normal;
+    font-size: inherit;
+    line-height: inherit;
+    font-family: poppins;
+    font-weight: 600;
+    color: color(black);
+
+    counter-increment: ordered;
+    content: counter(ordered) '.';
+  }
+}
+%settings-quote {
+}
+%settings-quote-cite {
+}

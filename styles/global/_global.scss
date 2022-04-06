@@ -1,0 +1,28 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+
+  background-color: color($settings-base-background);
+  color: $settings-font-base-color;
+
+  overflow: hidden;
+  overflow-y: auto;
+}
+
+.no-scroll {
+  position: fixed;
+  overflow: hidden;
+}
+
+.clearfix {
+  @extend %clearfix;
+}
+
+.visually-hidden {
+  @extend %visually-hidden;
+}

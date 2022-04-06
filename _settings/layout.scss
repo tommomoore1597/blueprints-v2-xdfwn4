@@ -1,0 +1,73 @@
+// BASE BACKGROUND COLOR
+// ---
+// Background base color value for whole project.
+// It is used as default page background.
+//
+// Note:
+// In the Preview, default background will be added to the 'Generic Content' section only
+//
+// Value:
+// Valid color key from $settings-colors map
+//
+$settings-base-background: blue-dark;
+
+// GAPS
+// ---
+// Gaps are used to generate page skeleton, margins and paddings helpers
+//
+// Structure:
+// integer: value[rem]
+//
+// Required: -1, 0, 1
+//
+// Helper function available:
+// Usage: gap() for default or gap(integer) to select a value
+//
+$settings-gaps: (
+  -1: 1rem,
+  0: 3rem,
+  // default
+  1: 7rem,
+  2: 10rem,
+  3: 11rem
+);
+
+// LAYOUT WIDTHS
+// ---
+// Layout widths are used to generate page skeleton and set width of elements
+//
+// Required: All
+//
+// Structure:
+// name: value[px, rem]
+//
+// Spacing helper function available:
+// Usage: layout-width('name')
+//
+$settings-layout-widths: (
+  text: 500px,
+  content: 600px,
+  inner: 800px,
+  outer: 1000px,
+);
+
+// BREAKPOINTS
+// ---
+// Project breakpoints map.
+//
+// Required: medium, large, xlarge
+//
+// Structure:
+// name: value[px, rem]
+//
+// Helper mixin available:
+// Usage: @include screen(name) { /* content */ }
+//
+$breakpoints: (
+  xsmall: rem(400px),
+  small: rem(576px),
+  medium: layout-width('content'),
+  large: layout-width('inner'),
+  xlarge: layout-width('outer'),
+  xxlarge: rem(1600px),
+);

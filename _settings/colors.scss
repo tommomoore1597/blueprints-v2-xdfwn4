@@ -1,0 +1,39 @@
+// COLORS
+// ---
+// Project colors settings.
+// $settings-colors map should contain representative named colors.
+// $settings-grey-scale map is optional, it should contain
+// numbered shades of grey.
+//
+// Required: black, white
+//
+// Structure:
+// name: valid CSS value (ie: hex, rgb, rgba, hsl)
+//
+// Helper function available:
+// Usage: color('name')
+//
+$settings-colors: (
+  orange: #d57011,
+  brown: #9c5f30,
+  divider-on-light: #cccccc,
+  divider-on-dark: #5b474d,
+  background-light: #f4f3f1,
+  background-mid: #d6cec4,
+  tour-silver: #bfbfbf,
+  tour-gold: #a89173,
+  tour-tasting-tales: #ca9743,
+  tour-taste-scotland: #eac55e,
+  tour-masterclass: #9ca3a9,
+  tour-platinum: #829386,
+  black: #321921,
+  red: red,
+);
+
+$settings-grey-scale: (
+  1: #d4d4d4,
+  2: #888,
+  3: #666,
+  4: #444,
+  5: #111,
+);
